@@ -1,0 +1,15 @@
+
+FILE: D:\cygwin64\home\dbwebb-kurser\oophp\me\anax-lite\view\default\block.php
+--------------------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+--------------------------------------------------------------------------------
+ 39 | ERROR | [x] Closing brace indented incorrectly; expected 4 spaces, found
+    |       |     0
+ 45 | ERROR | [x] Closing brace indented incorrectly; expected 4 spaces, found
+    |       |     0
+--------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------
+
+Time: 2.91 secs; Memory: 6.25Mb
+
