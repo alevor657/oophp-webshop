@@ -20,11 +20,17 @@ class Content implements \Anax\Common\AppInjectableInterface
     {
         if (!$route) {
             $sql = <<<EOD
-        SELECT * FROM `content` WHERE `type` = 'post';
+        SELECT *,
+        DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%dT%TZ') AS published_iso8601,
+        DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%d') AS published
+        FROM `content` WHERE `type` = 'post';
 EOD;
         } else {
             $sql = <<<EOD
-            SELECT * FROM `content` WHERE `type` = 'post' AND `slug` = '$route';
+            SELECT *,
+            DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%dT%TZ') AS published_iso8601,
+            DATE_FORMAT(COALESCE(updated, published), '%Y-%m-%d') AS published
+            FROM `content` WHERE `type` = 'post' AND `slug` = '$route';
 EOD;
         }
 
@@ -255,5 +261,19 @@ EOD;
         }
 
         return true;
+    }
+
+    public function getDataByTitle($title)
+    {
+        $sql = "SELECT * FROM content WHERE title='$title'";
+
+        $this->app->db->connect();
+        $res = $this->app->db->executeFetchAll($sql);
+
+        if (!$res) {
+            throw new \Exception("No content with title '$title' found in the database.", 1);
+        }
+
+        return $res[0];
     }
 }

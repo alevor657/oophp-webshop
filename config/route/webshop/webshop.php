@@ -16,8 +16,8 @@ $app->router->add("webshop", function () use ($app) {
 
 
 $app->router->add("webshop/edit/", function () use ($app) {
-    $data = $app->shop->getStockData();
-    $app->render("webshop/webshop", "Webshop", $data);
+    $data = $app->shop->getStockDataById($app->request->getGet('edit'));
+    $app->render("webshop/edit", "Webshop", $data);
 });
 
 $app->router->add("webshop/edit/updateStock", function () use ($app) {

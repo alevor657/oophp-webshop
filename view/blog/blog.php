@@ -16,6 +16,8 @@ $data = $app->content->getBlogData();
 <?php else : ?>
 <?php
 $data = $app->content->getBlogData($route)[0];
+// var_dump($data);
+// exit;
 ?>
 
 <article class="blog_active">

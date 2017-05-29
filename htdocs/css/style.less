@@ -21,14 +21,16 @@ body {
 
 @buttonColor: #428BCA;
 
-
-
-
 nav {
     // .logo {
     //     font-size: 1.5em;
     //     width: 300px;
     // }
+
+    .navbar_logo {
+        width: 40px;
+        margin: 8px;
+    }
 
 
     width: 100%;
@@ -75,9 +77,10 @@ main {
     // justify-content: space-around;
     min-height: 70vh;
 
-    h1 {
-        // display: block;
-        // width: 100%;
+    .main_content {
+        width: 800px;
+        margin: 15px auto;
+        text-align: center;
     }
 
     .about_me {
@@ -98,9 +101,9 @@ main {
 }
 
 footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
+    text-align: center;
+    padding: 15px;
     width: 100%;
     height: 20vh;
     background-color: @footerBGC;
@@ -397,7 +400,7 @@ hr {
 // Webshop
 
 .webshop_cart_sideblock {
-    position: absolute;
+    position: fixed;
     right: 0px;
     top: 40%;
     font-size: 2.5em;
@@ -439,6 +442,10 @@ hr {
             line-height: 40px;
             color: black;
         	writing-mode: tb-rl;
+        }
+
+        .cart_add {
+            background-color: lightgreen;
         }
 
         .cart_image {

@@ -197,6 +197,11 @@ class Users implements \Anax\Common\AppInjectableInterface
         }
     }
 
+    public function isLoggedIn()
+    {
+        return $this->app->session->has('user');
+    }
+
     public function getAllUsersData()
     {
         $this->app->db->connect();

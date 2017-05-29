@@ -1,5 +1,10 @@
         </main>
         <footer>
+            <?php
+            $data = $app->content->getDataByTitle('footer');
+            echo $app->filter->doFilter($data->data, $data->filter);
+            ?>
+            <br>
             <p>2017 &copy;</p>
         </footer>
 

@@ -7,7 +7,8 @@
  *
  */
 $app->router->add("", function () use ($app) {
-    $app->render("take1/home", "Home");
+    $data = $app->shop->getStockData();
+    $app->render("webshop/products", "Products", $data);
 });
 
 
@@ -17,17 +18,8 @@ $app->router->add("", function () use ($app) {
  *
  */
 $app->router->add("about", function () use ($app) {
-    $app->render("take1/about", "About");
-});
-
-
-
-/**
- * Report
- *
- */
-$app->router->add("report", function () use ($app) {
-    $app->render("take1/report", "Report");
+    $data = $app->content->getDataByTitle('about');
+    $app->render("take1/about", "About", $data);
 });
 
 

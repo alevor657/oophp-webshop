@@ -16,12 +16,12 @@ return [
 
         "news" => [
             "text" => "News",
-            "route" => "/news",
+            "route" => "blog",
         ],
 
         "about" => [
             "text" => "About us",
-            "route" => "/about",
+            "route" => "about",
         ],
     ]
 ];
