@@ -4,7 +4,7 @@
  *
  */
 $app->router->add("webshop/**", function () use ($app) {
-    if (!$app->users->isAdmin()) {
+    if (!$app->users->isLoggedIn()) {
         $app->redirect('');
     }
 });
@@ -41,17 +41,25 @@ $app->router->add("webshop/edit/addToStock", function () use ($app) {
 
 $app->router->add("webshop/cart", function () use ($app) {
     $data = $app->shop->getCart();
+    // var_dump($data);
     $app->render("webshop/cart", "Cart", $data);
 });
 
 $app->router->add("webshop/checkout", function () use ($app) {
+    $app->shop->doOrder();
     $data = $app->shop->getOrderDetails();
     $app->render("webshop/checkout", "Checkout", $data);
 });
 
+$app->router->add("webshop/orderHistory", function () use ($app) {
+    $history = $app->shop->getOrderHistory();
+    // var_dump($history);
+    // exit;
+});
+
 $app->router->add("webshop/cart/addToCart", function () use ($app) {
     $app->shop->addToCart($app->request->getGet('add'));
-    $app->redirect('webshop');
+    $app->redirect('');
 });
 
 $app->router->add("webshop/cart/delete", function () use ($app) {

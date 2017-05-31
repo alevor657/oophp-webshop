@@ -126,21 +126,24 @@ class Shop implements \Anax\Common\AppInjectableInterface
 
     public function doOrder()
     {
-        $cart = self::getCart();
-
         $this->app->db->connect();
 
-        foreach ($cart as $row) {
-            $sql = "call doOrder($row->stockId)";
-            $this->app->db->execute($sql);
-        }
+        $sql = "call doOrder({$this->app->users->getCurrentUserId()});";
+        $this->app->db->execute($sql);
     }
 
-    public function getOrderDetails()
+    public function getOrderDetails($orderId = null)
     {
-        self::doOrder();
+        if (!$orderId) {
+            $userId = $this->app->users->getCurrentUserId();
 
-        $sql = "select * from VgetCheckoutDetails";
+            $sql = "select max(id) as `order_id` from orders where user_id = $userId ";
+
+            $this->app->db->connect();
+            $orderId = $this->app->db->executeFetchAll($sql)[0]->order_id;
+        }
+
+        $sql = "call getOrderDetails($orderId);";
 
         $this->app->db->connect();
         $res = $this->app->db->executeFetchAll($sql);
@@ -148,7 +151,7 @@ class Shop implements \Anax\Common\AppInjectableInterface
         if ($res) {
             return $res;
         } else {
-            var_dump($res);
+            // var_dump($res);
             return [];
         }
     }
@@ -179,5 +182,38 @@ class Shop implements \Anax\Common\AppInjectableInterface
         } else {
             return '';
         }
+    }
+
+    private function getCurrentUserOrdersIds()
+    {
+        $curId = $this->app->users->getCurrentUserId();
+        $sql = "select id from orders where user_id = $curId";
+
+        $this->app->db->connect();
+        $res = $this->app->db->executeFetchAll($sql);
+        // var_dump($res);
+        // exit;
+
+        return $res;
+    }
+
+    public function getOrderHistory()
+    {
+        $res = [];
+        $orderIds = self::getCurrentUserOrdersIds();
+        // var_dump($orderIds);
+        // exit;
+
+        foreach ($orderIds as $id) {
+            if (!empty($id)) {
+                $res[] = self::getOrderDetails($id->id);
+            }
+        }
+
+        var_dump($res);
+        exit;
+
+
+        return $res;
     }
 }

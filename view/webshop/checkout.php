@@ -6,7 +6,7 @@
             <div class="cart_image"><img src="<?=$row->img?>" alt="image"></div>
             <p class="cart_description">Description: <?=$row->description?></p>
             <p class="cart_price">Price: <?=$row->price?> SEK</p>
-            <p class="cart_quantity">Quantity: <?=$row->item_qty?></p>
+            <p class="cart_quantity">Quantity: <?=$row->quantity?></p>
         </article>
     <?php endforeach; ?>
 </section>

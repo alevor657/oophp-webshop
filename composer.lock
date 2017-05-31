@@ -61,16 +61,16 @@
         },
         {
             "name": "anax/database",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/canax/database.git",
-                "reference": "90f27bedc6938bf11e73db79750779bcb86918f5"
+                "reference": "aada25b3a63cb172b00996674a6bfbb09cb7712e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/canax/database/zipball/90f27bedc6938bf11e73db79750779bcb86918f5",
-                "reference": "90f27bedc6938bf11e73db79750779bcb86918f5",
+                "url": "https://api.github.com/repos/canax/database/zipball/aada25b3a63cb172b00996674a6bfbb09cb7712e",
+                "reference": "aada25b3a63cb172b00996674a6bfbb09cb7712e",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
                 "micro",
                 "mvc"
             ],
-            "time": "2017-04-07 22:45:43"
+            "time": "2017-05-29 05:55:45"
         },
         {
             "name": "anax/request",

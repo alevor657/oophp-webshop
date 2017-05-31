@@ -207,7 +207,7 @@ class Users implements \Anax\Common\AppInjectableInterface
         $this->app->db->connect();
         $sortSuffix = self::getSortingSuffix();
         $searchSuffix = self::getSearchSuffix();
-        var_dump("SELECT * FROM users" . ' ' . $searchSuffix . ' ' . $sortSuffix);
+        // var_dump("SELECT * FROM users" . ' ' . $searchSuffix . ' ' . $sortSuffix);
         // exit;
         $res = $this->app->db->executeFetchAll("SELECT * FROM users" . ' ' . $searchSuffix . ' ' . $sortSuffix);
 
@@ -246,5 +246,10 @@ class Users implements \Anax\Common\AppInjectableInterface
         }
         $sql = "SELECT username FROM users WHERE id = '$id'";
         return $this->app->db->executeFetchAll($sql)[0]->username;
+    }
+
+    public function getCurrentUserId()
+    {
+        return $this->app->session->get('user');
     }
 }
