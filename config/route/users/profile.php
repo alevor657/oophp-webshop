@@ -27,7 +27,7 @@ $app->router->add("dashboard", function () use ($app) {
         $app->redirect('');
     }
 
-    $app->render("take1/dashboard", "Dasboard");
+    $app->render("take1/dashboard", "Dashboard");
 });
 
 // updateAllUsers

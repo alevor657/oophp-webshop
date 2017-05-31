@@ -14,19 +14,10 @@ class Dashboard implements \Anax\Common\AppInjectableInterface
         $html = "<table class='dashboard_table'>";
         $html .= "<tr>";
 
-        $columns = self::getColumnNames();
-
-        foreach ($columns as $key => $obj) {
-            // Fix validation
-            $key = null;
-            foreach ($obj as $item => $colName) {
-                // Fix validation
-                $item = null;
-
-                $html .= "<th>$colName</th>";
-            }
-        }
-
+        $html .= "<th>ID</th>";
+        $html .= "<th>Username</th>";
+        $html .= "<th>Password</th>";
+        $html .= "<th>Is admin?</th>";
         $html .= "<th>actions</th>";
 
         $html .= "</tr>";
@@ -88,15 +79,5 @@ class Dashboard implements \Anax\Common\AppInjectableInterface
         $html .= "</table>";
 
         return $html;
-    }
-
-    private function getColumnNames($db = "alvo16", $table = "users")
-    {
-        $sql = "SELECT `COLUMN_NAME`
-        FROM `INFORMATION_SCHEMA`.`COLUMNS`
-        WHERE `TABLE_SCHEMA`='$db'
-            AND `TABLE_NAME`='$table';";
-
-        return $this->app->db->executeFetchAll($sql);
     }
 }

@@ -207,6 +207,8 @@ class Users implements \Anax\Common\AppInjectableInterface
         $this->app->db->connect();
         $sortSuffix = self::getSortingSuffix();
         $searchSuffix = self::getSearchSuffix();
+        var_dump("SELECT * FROM users" . ' ' . $searchSuffix . ' ' . $sortSuffix);
+        // exit;
         $res = $this->app->db->executeFetchAll("SELECT * FROM users" . ' ' . $searchSuffix . ' ' . $sortSuffix);
 
         return $res;

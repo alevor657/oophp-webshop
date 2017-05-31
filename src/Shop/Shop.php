@@ -21,7 +21,11 @@ class Shop implements \Anax\Common\AppInjectableInterface
 
     public function getStockData()
     {
-        $sql = "select * from VgetStock";
+        $sortSuffix = self::getSortingSuffix();
+        $searchSuffix = self::getSearchSuffix();
+        $limit = self::getLimit();
+        $sql = "select * from VgetStock" . ' ' . $searchSuffix . ' ' . $sortSuffix . ' ' . $limit;
+        // exit;
 
         $this->app->db->connect();
         $res = $this->app->db->executeFetchAll($sql);
@@ -146,6 +150,34 @@ class Shop implements \Anax\Common\AppInjectableInterface
         } else {
             var_dump($res);
             return [];
+        }
+    }
+
+    private function getSortingSuffix()
+    {
+        // $suffix = isset($_GET['sort']) ? $_GET['sort'] : ;
+        if (isset($_GET['sort'])) {
+            return $suffix = "ORDER BY {$_GET['sort']} ASC";
+        } else {
+            return $suffix = "ORDER BY id ASC";
+        }
+    }
+
+    private function getSearchSuffix()
+    {
+        if (isset($_GET['search'])) {
+            return "WHERE description LIKE '%{$_GET['search']}%'";
+        } else {
+            return '';
+        }
+    }
+
+    private function getLimit()
+    {
+        if (isset($_GET['limit'])) {
+            return "LIMIT {$_GET['limit']}";
+        } else {
+            return '';
         }
     }
 }
