@@ -25,6 +25,7 @@ $cols = $app->shop->getColumnNames();
                 <td><select class="" name="category" required>
                     <option value="1">plate</option>
                     <option value="2">mug</option>
+                    <option value="3">spoon</option>
                 </select></td>
 
                 <td><input type="text" name="price" required></td>

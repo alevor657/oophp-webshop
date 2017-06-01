@@ -53,8 +53,7 @@ $app->router->add("webshop/checkout", function () use ($app) {
 
 $app->router->add("webshop/orderHistory", function () use ($app) {
     $history = $app->shop->getOrderHistory();
-    // var_dump($history);
-    // exit;
+    $app->render("webshop/history", "Order history", $history);
 });
 
 $app->router->add("webshop/cart/addToCart", function () use ($app) {

@@ -149,12 +149,12 @@ class Users implements \Anax\Common\AppInjectableInterface
         }
     }
 
-    private function encryptPassword($psw)
+    public function encryptPassword($psw)
     {
         return password_hash($psw, PASSWORD_DEFAULT);
     }
 
-    private function verifyPassword($psw, $hash)
+    public function verifyPassword($psw, $hash)
     {
         return password_verify($psw, $hash);
     }

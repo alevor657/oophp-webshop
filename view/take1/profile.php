@@ -12,13 +12,14 @@
 
         <input type="text" name="id" value="<?= $data->id ?>" hidden>
 
-        <p>
+        <br>
+
+        <!-- <p>
             Admin?
             <input class="admin-checkbox"type="checkbox" name="admin" value="1">
-        </p>
+        </p> -->
 
         <input type="submit" name="" value="Update">
 
-        <p><?= $app->cookie->get($data->username) ?></p>
     </form>
 </section>

@@ -210,10 +210,6 @@ class Shop implements \Anax\Common\AppInjectableInterface
             }
         }
 
-        var_dump($res);
-        exit;
-
-
         return $res;
     }
 }

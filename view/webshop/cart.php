@@ -1,6 +1,3 @@
-<?php
-var_dump($data);
-?>
 <section class="wrapper_cart">
     <?php foreach ($data as $row) : ?>
         <article class="cart_item">

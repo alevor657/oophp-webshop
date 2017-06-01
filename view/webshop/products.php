@@ -15,7 +15,7 @@
         </form>
         <form class="dashboard_sort" action="<?=$app->url->create('')?>" method="GET">
             <p>Show: </p>
-            <input type="number" name="limit" onchange="submit()" value="<?=$app->request->getGet('limit')?>">
+            <input type="number" name="limit" onchange="submit()" value="<?=$app->request->getGet('limit')?>" min='1'">
         </form>
         <form class="dashboard_search" action="<?=$app->url->create('')?>" method="GET">
             <p>Search:</p>

@@ -1,4 +1,4 @@
-<section class="wrapper webshop_checkout">
+<section class="wrapper wrapper_cart">
     <h1>Thank you for your purchase!</h1>
     <h4>Order date: <?=$data[0]->order_date?></h4>
     <?php foreach ($data as $row) : ?>
